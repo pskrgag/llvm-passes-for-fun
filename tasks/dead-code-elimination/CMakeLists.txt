@@ -21,6 +21,7 @@ if (NOT LLVM_ENABLE_RTTI)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
 endif ()
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g3 -O2")
 add_library(DeadCodeElimination SHARED DeadCodeElimination.cpp)
 
 # Allow undefined symbols in shared objects on Darwin (this is the default
