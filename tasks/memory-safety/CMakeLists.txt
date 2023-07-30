@@ -21,6 +21,9 @@ if (NOT LLVM_ENABLE_RTTI)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
 endif ()
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Og -g3 -fPIC")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC -g3")
+
 add_library(MemorySafety SHARED MemorySafety.cpp)
 
 # Allow undefined symbols in shared objects on Darwin (this is the default

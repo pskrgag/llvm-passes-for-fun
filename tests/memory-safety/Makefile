@@ -9,7 +9,7 @@ endif
 ifeq ($(UNAME_S),Darwin)
 	PASS_PLUGIN = ../../tasks/memory-safety/build/libMemorySafety.dylib
 endif
-PASS_RTLIB = ../../tasks/memory-safety/build/libMemorySafetyRuntime.a
+PASS_RTLIB = ../../tasks/memory-safety/build/libMemorySafetyRuntimeC.a
 
 SRC = $(wildcard *.c)
 LLS = $(patsubst %.c, build/%.ll, $(SRC))
@@ -33,7 +33,7 @@ build:
 
 .PHONY:
 build/%.out: build/%-san.ll
-	$(CC) -lstdc++ -g $< $(PASS_RTLIB) -o $@
+	$(CC) -lstdc++ -g $< $(PASS_RTLIB) -o $@ -lm
 
 # make sure the sanitized build step is _always_ executed
 .PHONY: build/%-san.ll
